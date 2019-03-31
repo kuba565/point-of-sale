@@ -10,7 +10,5 @@ Maven 3.4+
 windows and ubuntu
 
 # RUN APP:
-mvn clean install
 
 # TESTS:
-mvn clean test
