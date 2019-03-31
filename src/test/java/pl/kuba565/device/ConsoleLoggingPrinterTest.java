@@ -33,14 +33,23 @@ public class ConsoleLoggingPrinterTest {
         consoleLoggingPrinter.printReceipt(receipt);
 
         //verify
-        final String expected = "\n" +
-                "RECEIPT:\n" +
-                "-----------\n" +
-                "1. name: test1 price: 1\n" +
-                "2. name: test2 price: 2\n" +
-                "-----------\n" +
-                "total receipt price: 3\n" +
-                "-----------\n";
+        final String expected = new StringBuilder(System.lineSeparator())
+                .append("RECEIPT:")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .append("1. name: test1 price: 1")
+                .append(System.lineSeparator())
+                .append("2. name: test2 price: 2")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .append("total receipt price: 3")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .toString();
+
 
         Assert.assertEquals(expected, consoleLoggingPrinter.getOutput());
     }
@@ -58,12 +67,18 @@ public class ConsoleLoggingPrinterTest {
         consoleLoggingPrinter.printReceipt(receipt);
 
         //verify
-        final String expected = "\n" +
-                "RECEIPT:\n" +
-                "-----------\n" +
-                "-----------\n" +
-                "total receipt price: 0\n" +
-                "-----------\n";
+        final String expected = new StringBuilder(System.lineSeparator())
+                .append("RECEIPT:")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .append("total receipt price: 0")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .toString();
 
         Assert.assertEquals(expected, consoleLoggingPrinter.getOutput());
     }

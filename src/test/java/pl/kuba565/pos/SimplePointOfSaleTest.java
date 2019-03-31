@@ -148,12 +148,20 @@ public class SimplePointOfSaleTest {
 
 
         //verify
-        final String expected = "\nRECEIPT:\n" +
-                "-----------\n" +
-                "1. name: bread price: 2.5\n" +
-                "-----------\n" +
-                "total receipt price: 2.5\n" +
-                "-----------\n";
+        final String expected = new StringBuilder(System.lineSeparator())
+                .append("RECEIPT:")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .append("1. name: bread price: 2.5")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .append("total receipt price: 2.5")
+                .append(System.lineSeparator())
+                .append("-----------")
+                .append(System.lineSeparator())
+                .toString();
 
         Assert.assertEquals(expected, pointOfSale.getPrinter().getOutput());
     }
