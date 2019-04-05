@@ -1,4 +1,4 @@
-package pl.kuba565.device;
+package pl.kuba565.view;
 
 import pl.kuba565.model.Product;
 
@@ -13,5 +13,5 @@ public interface Display {
 
     void logTotalSum(BigDecimal totalSum);
 
-    String getMessage();
+    String flush();
 }

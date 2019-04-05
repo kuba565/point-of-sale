@@ -1,7 +1,5 @@
-package pl.kuba565.device;
+package pl.kuba565.scanner;
 
-
-import pl.kuba565.pos.PointOfSale;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +13,15 @@ public class ProductScanner implements Scanner {
 
     @Override
     public Long scanProductByBarCode(Long barCode) {
-        notifyObservers(barCode);
+        sendBarCodeToDevices(barCode);
         return barCode;
     }
 
-
-    public void attach(PointOfSale pointOfSale) {
-        scannerObservers.add(pointOfSale);
+    public void registerObserver(ScannerObserver scannerObserver) {
+        scannerObservers.add(scannerObserver);
     }
 
-    private void notifyObservers(Long barCode) {
+    private void sendBarCodeToDevices(Long barCode) {
         for (ScannerObserver pointOfSale : scannerObservers) {
             pointOfSale.onScannedBarCode(barCode);
         }

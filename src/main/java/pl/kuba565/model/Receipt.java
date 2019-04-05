@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface Receipt {
-    List<Product> getScannedProductList();
+    List<Product> getProductList();
 
     BigDecimal getTotalSum();
 }

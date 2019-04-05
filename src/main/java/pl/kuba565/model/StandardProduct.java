@@ -7,7 +7,6 @@ public class StandardProduct implements Product {
     private BigDecimal price;
     private Long id;
 
-
     public StandardProduct(String name, BigDecimal price, Long id) {
         this.name = name;
         this.price = price;

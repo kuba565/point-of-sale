@@ -1,8 +1,8 @@
 package pl.kuba565.pos;
 
-import pl.kuba565.device.Display;
-import pl.kuba565.device.Printer;
-import pl.kuba565.device.ScannerObserver;
+import pl.kuba565.view.Display;
+import pl.kuba565.view.Printer;
+import pl.kuba565.scanner.ScannerObserver;
 
 public interface PointOfSale extends ScannerObserver {
 

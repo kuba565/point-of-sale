@@ -1,4 +1,4 @@
-package pl.kuba565.device;
+package pl.kuba565.scanner;
 
 public interface ScannerObserver {
     void onScannedBarCode(Long barCode);

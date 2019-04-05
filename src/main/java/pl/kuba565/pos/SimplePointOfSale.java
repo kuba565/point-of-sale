@@ -1,9 +1,11 @@
 package pl.kuba565.pos;
 
+import pl.kuba565.view.Display;
+import pl.kuba565.view.Printer;
+import pl.kuba565.scanner.Scanner;
 import pl.kuba565.model.Product;
-import pl.kuba565.model.ProductRepository;
+import pl.kuba565.repository.ProductRepository;
 import pl.kuba565.model.Receipt;
-import pl.kuba565.device.*;
 import pl.kuba565.model.StandardReceipt;
 
 import java.math.BigDecimal;
@@ -16,32 +18,31 @@ public class SimplePointOfSale implements PointOfSale {
     private Display display;
     private Printer printer;
     private List<Product> scannedProductList;
-    private BigDecimal totalSum;
 
     public SimplePointOfSale(Display display, Printer printer, ProductRepository productRepository, Scanner scanner) {
         this.display = display;
         this.printer = printer;
         this.productRepository = productRepository;
         scannedProductList = new ArrayList<>();
-        totalSum = new BigDecimal(0.0);
-        scanner.attach(this);
+        scanner.registerObserver(this);
     }
-
 
     @Override
     public void exit() {
-        calculateTotalSum();
+        BigDecimal totalSum = calculateTotalSum();
         Receipt receipt = new StandardReceipt(scannedProductList, totalSum);
         printer.printReceipt(receipt);
         display.logTotalSum(totalSum);
     }
 
-    private void calculateTotalSum() {
+    private BigDecimal calculateTotalSum() {
+        BigDecimal totalSum = new BigDecimal(0L);
         if (scannedProductList.size() > 0) {
             for (Product currentProduct : scannedProductList) {
                 totalSum = totalSum.add(currentProduct.getPrice());
             }
         }
+        return totalSum;
     }
 
     @Override
@@ -57,15 +58,20 @@ public class SimplePointOfSale implements PointOfSale {
 
     @Override
     public void onScannedBarCode(Long barCode) {
-        Product scannedProduct = productRepository.getByBarCode(barCode);
-        if (scannedProduct != null) {
+        Product scannedProduct = productRepository.getProductByBarCode(barCode);
+        boolean scannedProductIsNull = scannedProduct != null;
+
+        if (scannedProductIsNull) {
             display.logScannedProductNameAndPrice(scannedProduct);
             scannedProductList.add(scannedProduct);
-        } else if (barCode == 0L) {
-            display.logInvalidBarCode();
         } else {
-            display.logProductNotFound();
+            boolean barCodeIsInvalid = barCode == 0L;
+
+            if (barCodeIsInvalid) {
+                display.logInvalidBarCode();
+            } else {
+                display.logProductNotFound();
+            }
         }
     }
-
 }
