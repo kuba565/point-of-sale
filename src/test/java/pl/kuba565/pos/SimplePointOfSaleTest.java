@@ -39,11 +39,17 @@ public class SimplePointOfSaleTest {
         pointOfSale.exit();
 
         //then
-        final String expected = "DISPLAY: Scanned: bread price: 2.5" +
-                "DISPLAY: Scanned: milk price: 3" +
-                "DISPLAY: Product not found." +
-                "DISPLAY: Invalid bar code." +
-                "DISPLAY: total sum: 5.5";
+        final String expected = new StringBuilder()
+                .append("DISPLAY: Scanned: bread price: 2.5")
+                .append(System.lineSeparator())
+                .append("DISPLAY: Scanned: milk price: 3")
+                .append(System.lineSeparator())
+                .append("DISPLAY: Product not found.")
+                .append(System.lineSeparator())
+                .append("DISPLAY: Invalid bar code.")
+                .append(System.lineSeparator())
+                .append("DISPLAY: total sum: 5.5")
+                .toString();
 
         Assert.assertEquals(expected, pointOfSale.getDisplay().flush());
     }
@@ -62,8 +68,11 @@ public class SimplePointOfSaleTest {
         pointOfSale.exit();
 
         //then
-        final String expected = "DISPLAY: Product not found."
-                + "DISPLAY: total sum: 0";
+        final String expected = new StringBuilder()
+                .append("DISPLAY: Product not found.")
+                .append(System.lineSeparator())
+                .append("DISPLAY: total sum: 0")
+                .toString();
 
         Assert.assertEquals(expected, pointOfSale.getDisplay().flush());
     }
@@ -83,8 +92,11 @@ public class SimplePointOfSaleTest {
         pointOfSale.exit();
 
         //then
-        final String expected = "DISPLAY: Scanned: testProduct price: 100.1"
-                + "DISPLAY: total sum: 100.1";
+        final String expected = new StringBuilder()
+                .append("DISPLAY: Scanned: testProduct price: 100.1")
+                .append(System.lineSeparator())
+                .append("DISPLAY: total sum: 100.1")
+                .toString();
 
         Assert.assertEquals(expected, pointOfSale.getDisplay().flush());
     }
@@ -102,8 +114,11 @@ public class SimplePointOfSaleTest {
         pointOfSale.exit();
 
         //then
-        final String expected = "DISPLAY: Invalid bar code."
-                + "DISPLAY: total sum: 0";
+        final String expected = new StringBuilder()
+                .append("DISPLAY: Invalid bar code.")
+                .append(System.lineSeparator())
+                .append("DISPLAY: total sum: 0")
+                .toString();
 
         Assert.assertEquals(expected, pointOfSale.getDisplay().flush());
     }
@@ -122,8 +137,10 @@ public class SimplePointOfSaleTest {
         pointOfSale.exit();
 
         //then
-        final String expected = "DISPLAY: Scanned: bread price: 2.5"
-                + "DISPLAY: total sum: 2.5";
+        final String expected = new StringBuilder("DISPLAY: Scanned: bread price: 2.5")
+                .append(System.lineSeparator())
+                .append("DISPLAY: total sum: 2.5")
+                .toString();
 
         Assert.assertEquals(expected, pointOfSale.getDisplay().flush());
     }

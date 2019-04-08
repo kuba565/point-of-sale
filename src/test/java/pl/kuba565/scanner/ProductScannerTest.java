@@ -28,27 +28,29 @@ public class ProductScannerTest {
 
     @Test
     public void shouldNotFindProductNotInDB() {
+        //given
         ProductRepository productRepository = new InMemoryProductRepository();
         Scanner scanner = new ProductScanner();
 
-        //then
+        //when
         Long scannedProductBarCode = scanner.scanProductByBarCode(1L);
-        Product scannedProduct = productRepository.getProductByBarCode(scannedProductBarCode);
 
-        //verify
+        //then
+        Product scannedProduct = productRepository.getProductByBarCode(scannedProductBarCode);
         Assert.assertNull(scannedProduct);
     }
 
     @Test
     public void shouldNotFindProductWithWrongBarcode() {
+        //given
         ProductRepository productRepository = new InMemoryProductRepository();
         Scanner scanner = new ProductScanner();
 
-        //then
+        //when
         Long scannedProductBarCode = scanner.scanProductByBarCode(0L);
-        Product scannedProduct = productRepository.getProductByBarCode(scannedProductBarCode);
 
-        //verify
+        //then
+        Product scannedProduct = productRepository.getProductByBarCode(scannedProductBarCode);
         Assert.assertNull(scannedProduct);
     }
 }

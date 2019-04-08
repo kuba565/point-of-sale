@@ -12,19 +12,23 @@ public class ConsoleLoggingDisplay implements Display {
 
     @Override
     public void logProductNotFound() {
-        outputSB.append("DISPLAY: Product not found.");
+
+        outputSB.append("DISPLAY: Product not found.")
+                .append(System.lineSeparator());
     }
 
     @Override
     public void logInvalidBarCode() {
-        outputSB.append("DISPLAY: Invalid bar code.");
+        outputSB.append("DISPLAY: Invalid bar code.")
+                .append(System.lineSeparator());
     }
 
     @Override
     public void logScannedProductNameAndPrice(Product scannedProduct) {
         BigDecimal price = scannedProduct.getPrice();
         String name = scannedProduct.getName();
-        outputSB.append("DISPLAY: Scanned: " + name + " price: " + price);
+        outputSB.append("DISPLAY: Scanned: " + name + " price: " + price)
+                .append(System.lineSeparator());
     }
 
 
@@ -40,7 +44,6 @@ public class ConsoleLoggingDisplay implements Display {
         return msg;
     }
 
-    //TODO: FIX DISPLAY OUTPUT CONCATENATION!
     private void printOnScreen(String msg) {
         System.out.println("DISPLAY: " + msg);
     }

@@ -29,7 +29,9 @@ public class ConsoleLoggingDisplayTest {
         String result = display.flush();
 
         //then
-        String expected = "DISPLAY: Scanned: testProduct price: 2";
+        String expected = new StringBuilder("DISPLAY: Scanned: testProduct price: 2")
+                .append(System.lineSeparator())
+                .toString();
 
         assertEquals(expected, result);
     }
@@ -62,7 +64,10 @@ public class ConsoleLoggingDisplayTest {
         scanner.scanProductByBarCode(10L);
 
         //then
-        final String expected = "DISPLAY: Product not found.";
+        final String expected = new StringBuilder("DISPLAY: Product not found.")
+                .append(System.lineSeparator())
+                .toString();
+
         Assert.assertEquals(expected, display.flush());
     }
 
@@ -78,7 +83,10 @@ public class ConsoleLoggingDisplayTest {
         scanner.scanProductByBarCode(0L);
 
         //then
-        final String expected = "DISPLAY: Invalid bar code.";
+        final String expected = new StringBuilder("DISPLAY: Invalid bar code.")
+                .append(System.lineSeparator())
+                .toString();
+
         Assert.assertEquals(expected, display.flush());
     }
 }

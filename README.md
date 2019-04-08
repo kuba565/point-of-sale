@@ -1,14 +1,14 @@
-# SIMPLE POINT OF SALE
-# includes :
-# - console display
-# - console printer
-# - in-memory repository
+# POINT OF SALE
+includes :
+ - bar code scanner
+ - console display
+ - console printer
+ - in-memory repository
 
 # REQUIREMENTS:
-JAVA 8+,
+JAVA 11+,
 Maven 3.4+
-windows and ubuntu
+Tested on Windows
 
-# RUN APP:
-
-# TESTS:
+# How to run:
+ - run all tests in test directory
