@@ -1,14 +1,16 @@
 # POINT OF SALE
-includes :
+includes:
  - bar code scanner
- - console display
+ - LCD display
  - console printer
  - in-memory repository
 
 # REQUIREMENTS:
-JAVA 11+,
-Maven 3.4+
-Tested on Windows
+ * JAVA 11+,
+ * Maven 3.4+
+ * Tested on Windows 10
 
 # How to run:
- - run all tests in test directory
+ * run all tests in test directory
+
+# Task requirements are all covered in aforementioned tests.

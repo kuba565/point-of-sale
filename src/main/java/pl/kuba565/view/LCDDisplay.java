@@ -4,10 +4,10 @@ import pl.kuba565.model.Product;
 
 import java.math.BigDecimal;
 
-public class ConsoleLoggingDisplay implements Display {
+public class LCDDisplay implements Display {
     private StringBuilder outputSB = new StringBuilder();
 
-    public ConsoleLoggingDisplay() {
+    public LCDDisplay() {
     }
 
     @Override
@@ -45,6 +45,6 @@ public class ConsoleLoggingDisplay implements Display {
     }
 
     private void printOnScreen(String msg) {
-        System.out.println("DISPLAY: " + msg);
+        System.out.println(msg);
     }
 }

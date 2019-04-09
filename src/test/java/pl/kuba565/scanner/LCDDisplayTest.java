@@ -8,7 +8,7 @@ import pl.kuba565.repository.InMemoryProductRepository;
 import pl.kuba565.model.Product;
 import pl.kuba565.repository.ProductRepository;
 import pl.kuba565.model.StandardProduct;
-import pl.kuba565.view.ConsoleLoggingDisplay;
+import pl.kuba565.view.LCDDisplay;
 import pl.kuba565.view.ConsoleLoggingPrinter;
 import pl.kuba565.view.Display;
 
@@ -17,11 +17,11 @@ import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 
 
-public class ConsoleLoggingDisplayTest {
+public class LCDDisplayTest {
     @Test
     public void shouldLogScannedProductNameAndPrice() {
         //given
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         Product product = new StandardProduct("testProduct", new BigDecimal(2.0), 10L);
 
         //when
@@ -39,7 +39,7 @@ public class ConsoleLoggingDisplayTest {
     @Test
     public void shouldLogTotalSum() {
         //given
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         BigDecimal totalSum = new BigDecimal("2.23");
 
         //when
@@ -56,7 +56,7 @@ public class ConsoleLoggingDisplayTest {
     public void shouldLogProductNotFound() {
         //given
         ProductRepository productRepository = new InMemoryProductRepository();
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         Scanner scanner = new ProductScanner();
         PointOfSale pointOfSale = new SimplePointOfSale(display, new ConsoleLoggingPrinter(), productRepository, scanner);
 
@@ -75,7 +75,7 @@ public class ConsoleLoggingDisplayTest {
     public void shouldLogInvalidBarCode() {
         //given
         ProductRepository productRepository = new InMemoryProductRepository();
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         Scanner scanner = new ProductScanner();
         PointOfSale pointOfSale = new SimplePointOfSale(display, new ConsoleLoggingPrinter(), productRepository, scanner);
 

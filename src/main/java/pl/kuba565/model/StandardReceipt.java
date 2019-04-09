@@ -33,16 +33,4 @@ public class StandardReceipt implements Receipt {
                 Objects.equals(totalSum, that.totalSum);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(productList, totalSum);
-    }
-
-    @Override
-    public String toString() {
-        return "StandardReceipt{" +
-                "productList=" + productList +
-                ", totalSum=" + totalSum +
-                '}';
-    }
 }

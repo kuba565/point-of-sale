@@ -22,8 +22,6 @@ public class ProductScanner implements Scanner {
     }
 
     private void sendBarCodeToDevices(Long barCode) {
-        for (ScannerObserver pointOfSale : scannerObservers) {
-            pointOfSale.onScannedBarCode(barCode);
-        }
+        scannerObservers.forEach(pointOfSale -> pointOfSale.onScannedBarCode(barCode));
     }
 }

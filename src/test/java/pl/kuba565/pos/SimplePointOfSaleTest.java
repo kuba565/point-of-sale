@@ -9,7 +9,7 @@ import pl.kuba565.model.Product;
 import pl.kuba565.repository.ProductRepository;
 import pl.kuba565.model.StandardProduct;
 import pl.kuba565.scanner.*;
-import pl.kuba565.view.ConsoleLoggingDisplay;
+import pl.kuba565.view.LCDDisplay;
 import pl.kuba565.view.ConsoleLoggingPrinter;
 import pl.kuba565.view.Display;
 import pl.kuba565.view.Printer;
@@ -27,7 +27,7 @@ public class SimplePointOfSaleTest {
         StandardProduct cheese = new StandardProduct("cheese", new BigDecimal(20.0), 3L);
         StandardProduct butter = new StandardProduct("butter", new BigDecimal(5.0), 4L);
         final ProductRepository productRepository = givenProductRepositoryWithProducts(bread, milk, cheese, butter);
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         Scanner scanner = new ProductScanner();
         PointOfSale pointOfSale = new SimplePointOfSale(display, new ConsoleLoggingPrinter(), productRepository, scanner);
 
@@ -59,7 +59,7 @@ public class SimplePointOfSaleTest {
     public void shouldLogProductNotFoundToDisplay() {
         //given
         ProductRepository productRepository = new InMemoryProductRepository();
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         Scanner scanner = new ProductScanner();
         PointOfSale pointOfSale = new SimplePointOfSale(display, new ConsoleLoggingPrinter(), productRepository, scanner);
 
@@ -83,7 +83,7 @@ public class SimplePointOfSaleTest {
         //given
         Product testProduct = new StandardProduct("testProduct", new BigDecimal("100.1"), 15L);
         final ProductRepository productRepository = givenProductRepositoryWithProducts(testProduct);
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         Scanner scanner = new ProductScanner();
         PointOfSale pointOfSale = new SimplePointOfSale(display, new ConsoleLoggingPrinter(), productRepository, scanner);
 
@@ -104,7 +104,7 @@ public class SimplePointOfSaleTest {
     @Test
     public void shouldLogInvalidBarCodeToDisplay() {
         //given
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         final ProductRepository productRepository = new InMemoryProductRepository();
         Scanner scanner = new ProductScanner();
         PointOfSale pointOfSale = new SimplePointOfSale(display, new ConsoleLoggingPrinter(), productRepository, scanner);
@@ -128,7 +128,7 @@ public class SimplePointOfSaleTest {
         //given
         StandardProduct bread = new StandardProduct("bread", new BigDecimal(2.5), 1L);
         final ProductRepository productRepository = givenProductRepositoryWithProducts(bread);
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         Scanner scanner = new ProductScanner();
         PointOfSale pointOfSale = new SimplePointOfSale(display, new ConsoleLoggingPrinter(), productRepository, scanner);
 
@@ -146,9 +146,24 @@ public class SimplePointOfSaleTest {
     }
 
     @Test
+    public void shouldGetPrinter() {
+        //given
+        final ProductRepository productRepository = new InMemoryProductRepository();
+        Display display = new LCDDisplay();
+        Scanner scanner = new ProductScanner();
+        PointOfSale pointOfSale = new SimplePointOfSale(display, new ConsoleLoggingPrinter(), productRepository, scanner);
+
+        //when
+        Printer printer = pointOfSale.getPrinter();
+
+        //then
+        Assert.assertNotNull(printer);
+    }
+
+    @Test
     public void shouldSendMessagesToPrinter() {
         //given
-        Display display = new ConsoleLoggingDisplay();
+        Display display = new LCDDisplay();
         Scanner scanner = new ProductScanner();
         StandardProduct bread = new StandardProduct("bread", new BigDecimal(2.5), 1L);
         final ProductRepository productRepository = givenProductRepositoryWithProducts(bread);
