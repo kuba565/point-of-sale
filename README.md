@@ -11,6 +11,6 @@ includes:
  * Tested on Windows 10
 
 # How to run:
- * run all tests in test directory
+ * use "mvn test" command to run all tests
 
 # Task requirements are all covered in aforementioned tests.

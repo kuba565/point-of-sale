@@ -1,0 +1,15 @@
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\model\Receipt.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\repository\ProductRepository.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\scanner\ScannerObserver.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\pos\PointOfSale.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\model\StandardReceipt.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\scanner\Scanner.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\view\Printer.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\repository\InMemoryProductRepository.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\view\LCDDisplay.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\scanner\ProductScanner.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\model\StandardProduct.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\model\Product.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\pos\SimplePointOfSale.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\view\ConsoleLoggingPrinter.java
+C:\Users\U01033\code\point-of-sale\src\main\java\pl\kuba565\view\Display.java
